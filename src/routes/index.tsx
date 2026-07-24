@@ -26,6 +26,7 @@ import {
 import { SiMongodb, SiTypescript, SiNextdotjs } from "react-icons/si";
 import { HiArrowDown } from "react-icons/hi";
 import portrait from "@/assets/Sumaiya_Jannat.png";
+import image from "@/assets/Sumaiya.jpeg";
 import { PROJECTS } from "@/lib/projects";
 
 export const Route = createFileRoute("/")({
@@ -182,9 +183,8 @@ function Navbar() {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, delay: 1.2 }}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/70 backdrop-blur-xl border-b border-white/5" : "bg-transparent"
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/70 backdrop-blur-xl border-b border-white/5" : "bg-transparent"
+        }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <LogoMark />
@@ -194,15 +194,13 @@ function Navbar() {
             <a
               key={n.id}
               href={`#${n.id}`}
-              className={`group relative text-sm font-medium transition-colors ${
-                active === n.id ? "text-primary" : "text-white/80 hover:text-primary"
-              }`}
+              className={`group relative text-sm font-medium transition-colors ${active === n.id ? "text-primary" : "text-white/80 hover:text-primary"
+                }`}
             >
               {n.label}
               <span
-                className={`absolute -bottom-1 left-0 h-[2px] bg-primary transition-all duration-300 ${
-                  active === n.id ? "w-full" : "w-0 group-hover:w-full"
-                }`}
+                className={`absolute -bottom-1 left-0 h-[2px] bg-primary transition-all duration-300 ${active === n.id ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
               />
             </a>
           ))}
@@ -477,34 +475,39 @@ function FeatureStrip() {
 function About() {
   const { ref, inView } = useReveal();
   return (
-    <section id="about" ref={ref} className="relative mx-auto max-w-7xl px-6 py-24 lg:px-10">
+    <section id="about" ref={ref} className="relative overflow-visible mx-auto max-w-7xl md:px-6 py-24 lg:px-10">
       <ConfettiDots className="opacity-40" />
-      <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+      <div className="grid grid-cols-1 items-center gap-14 overflow-visible lg:grid-cols-2">
         <motion.div
           initial={{ clipPath: "inset(0 100% 0 0)" }}
           animate={inView ? { clipPath: "inset(0 0% 0 0)" } : {}}
           transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] as const }}
           className="relative mx-auto aspect-[4/5] w-full max-w-md "
         >
-          <TornPhoto src={portrait} alt="Sumaiya Jannat about" className="h-full w-full" />
+          <div className="absolute inset-6 rounded-[40px] bg-gradient-to-br from-primary/25 via-transparent to-[oklch(0.78_0.17_145)]/20 blur-3xl" />
+
+          <TornPhoto src={image} alt="Sumaiya Jannat about" className="relative  w-full" />
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="absolute left-0 top-10 rounded-2xl bg-card px-5 py-4 shadow-2xl sm:-left-8 max-w-[12rem] text-left"
+            whileHover={{ y: -4 }}
+            className="absolute left-4 top-10 z-20 rounded-2xl border border-white/10 bg-card/90 px-5 py-4 shadow-2xl backdrop-blur-md  overflow-visible max-w-[12rem] text-left"
           >
             <div className="font-display text-3xl font-extrabold text-[oklch(0.78_0.17_145)]">3+</div>
-            <div className="text-xs text-muted-foreground">Projects Shipped</div>
+            <div className="text-xs text-muted-foreground whitespace-nowrap">Projects Shipped</div>
           </motion.div>
+
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
             transition={{ delay: 0.75, duration: 0.5 }}
-            className="absolute right-4 bottom-10 z-20 rounded-2xl bg-card px-5 py-4 shadow-2xl max-w-[12rem] text-left"
+            whileHover={{ y: -4 }}
+            className="absolute right-4 bottom-10 z-20 rounded-2xl border border-white/10 bg-card/95 px-5 py-4 shadow-2xl backdrop-blur-md overflow-visible max-w-[12rem] text-left"
           >
             <div className="font-display text-3xl font-extrabold text-[oklch(0.82_0.15_82)]">MERN</div>
-            <div className="text-xs text-muted-foreground">Full-Stack Focus</div>
+            <div className="text-xs text-muted-foreground whitespace-nowrap">Full-Stack Focus</div>
           </motion.div>
         </motion.div>
 
@@ -528,6 +531,7 @@ function About() {
             <div><span className="text-white/50">Phone:</span> <span className="text-white">01533029643</span></div>
             <div><span className="text-white/50">Study:</span> <span className="text-white">B.Sc. CSE, NEUB</span></div>
           </div>
+
           <a
             href="#contact"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_-10px_oklch(0.68_0.18_40/0.7)] transition-transform hover:-translate-y-0.5"
@@ -581,8 +585,8 @@ function ProgressBar({ name, pct, delay }: { name: string; pct: number; delay: n
 function Skills() {
   const { ref, inView } = useReveal();
   return (
-    <section id="skills" ref={ref} className="relative mx-auto max-w-7xl px-6 py-24 lg:px-10">
-      <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-2">
+    <section id="skills" ref={ref} className="relative mx-auto max-w-7xl px-6 md:py-24 lg:px-10">
+      <div className="max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
           <p className="mb-3 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-primary">
             <span className="h-px w-8 bg-primary" /> My Skills
@@ -600,15 +604,7 @@ function Skills() {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mx-auto aspect-[4/5] w-full max-w-md"
-        >
-          <div className="absolute -top-6 left-6 right-6 h-8 rounded-full bg-gradient-to-r from-primary via-[oklch(0.82_0.15_82)] to-[oklch(0.78_0.17_145)] opacity-80 blur-sm" />
-          <TornPhoto src={portrait} alt="Skills portrait" className="h-full w-full" />
-        </motion.div>
+
       </div>
 
       <div className="mt-20 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -667,9 +663,8 @@ function Projects() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`rounded-full px-5 py-2 text-sm font-semibold transition-all ${
-                filter === f ? "bg-primary text-primary-foreground shadow-lg" : "text-white/70 hover:text-white"
-              }`}
+              className={`rounded-full px-5 py-2 text-sm font-semibold transition-all ${filter === f ? "bg-primary text-primary-foreground shadow-lg" : "text-white/70 hover:text-white"
+                }`}
             >
               {f}
             </button>
