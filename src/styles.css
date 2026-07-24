@@ -1,0 +1,77 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent-green: var(--accent-green);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-purple: var(--accent-purple);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.22 0.015 265);
+  --foreground: oklch(1 0 0);
+  --card: oklch(0.26 0.018 265);
+  --card-foreground: oklch(1 0 0);
+  --muted: oklch(0.3 0.018 265);
+  --muted-foreground: oklch(0.72 0.02 265);
+  --primary: oklch(0.68 0.18 40);
+  --primary-foreground: oklch(1 0 0);
+  --accent-green: oklch(0.78 0.17 145);
+  --accent-gold: oklch(0.82 0.15 82);
+  --accent-purple: oklch(0.68 0.18 300);
+  --border: oklch(1 0 0 / 8%);
+  --ring: oklch(0.68 0.18 40);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility torn-mask {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500' preserveAspectRatio='none'><path fill='black' d='M20,30 L60,10 L110,25 L160,8 L210,22 L260,6 L310,20 L360,10 L385,40 L378,90 L392,140 L380,190 L390,240 L378,290 L390,340 L380,390 L392,440 L370,478 L320,470 L270,485 L220,472 L170,488 L120,472 L70,486 L25,470 L12,430 L20,380 L8,330 L18,280 L6,230 L18,180 L8,130 L20,80 Z'/></svg>");
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500' preserveAspectRatio='none'><path fill='black' d='M20,30 L60,10 L110,25 L160,8 L210,22 L260,6 L310,20 L360,10 L385,40 L378,90 L392,140 L380,190 L390,240 L378,290 L390,340 L380,390 L392,440 L370,478 L320,470 L270,485 L220,472 L170,488 L120,472 L70,486 L25,470 L12,430 L20,380 L8,330 L18,280 L6,230 L18,180 L8,130 L20,80 Z'/></svg>");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
