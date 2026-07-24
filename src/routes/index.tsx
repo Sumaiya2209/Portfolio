@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, useMemo } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence, useScroll, useSpring, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
@@ -26,6 +26,7 @@ import {
 import { SiMongodb, SiTypescript, SiNextdotjs } from "react-icons/si";
 import { HiArrowDown } from "react-icons/hi";
 import portrait from "@/assets/Sumaiya_Jannat.png";
+import { PROJECTS } from "@/lib/projects";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -72,42 +73,6 @@ const PROGRESS_SKILLS = [
   { name: "Node.js / Express", pct: 85 },
   { name: "MongoDB", pct: 80 },
   { name: "TypeScript", pct: 80 },
-];
-
-const PROJECTS = [
-  {
-    id: "scholarai",
-    name: "ScholarAI",
-    tagline: "Agentic AI research paper platform",
-    category: "AI-Powered",
-    description: "Students upload papers for admin review; once approved, papers go public. Groq LLM auto-generates summaries and key points; an AI chat assistant answers questions from paper content.",
-    tech: ["Next.js 16", "TypeScript", "Tailwind v4", "TanStack Query", "Recharts", "Node/Express", "MongoDB", "Better Auth", "Groq (Llama 3.3 70B)", "Cloudinary"],
-    github: "https://github.com/Sumaiya2209/scholarai-client",
-    live: "https://scholarai-client.vercel.app",
-    gradient: "from-[#F15A29] via-[#FF8A3D] to-[#FBBF24]",
-  },
-  {
-    id: "medicare",
-    name: "Medicare Connect",
-    tagline: "Full-stack healthcare management platform",
-    category: "Full-Stack",
-    description: "Connects patients, doctors, and admins; digitizes the appointment lifecycle from doctor discovery to consultation and payment.",
-    tech: ["Next.js 15", "Tailwind", "HeroUI v3", "Framer Motion", "Recharts", "Stripe.js", "Node/Express", "MongoDB Atlas", "Better Auth (JWT)"],
-    github: "https://github.com/Sumaiya2209/medicare-client",
-    live: null,
-    gradient: "from-[#4ADE80] via-[#22D3EE] to-[#3B82F6]",
-  },
-  {
-    id: "paws",
-    name: "Paws & Home",
-    tagline: "MERN pet adoption platform",
-    category: "Full-Stack",
-    description: "Browse pets, view profiles, submit adoption requests; shelters manage listings and approve or reject requests.",
-    tech: ["React.js", "React Router", "Tailwind", "DaisyUI", "Firebase Auth", "React Hook Form", "TanStack Query", "Node.js", "Express.js", "MongoDB", "JWT"],
-    github: "https://github.com/Sumaiya2209/Paws-frontend",
-    live: "https://paws-frontend-three.vercel.app",
-    gradient: "from-[#A855F7] via-[#EC4899] to-[#F15A29]",
-  },
 ];
 
 const FEATURES = [
@@ -401,11 +366,11 @@ function Hero() {
             <span className="h-px w-8 bg-primary" /> Hello, I'm
           </motion.p>
           <motion.h1 variants={fadeUp} className="font-display text-5xl font-extrabold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
-            Sumaiya <br /> Jannat.
+            Sumaiya <br /> Jannat
           </motion.h1>
           <motion.p variants={fadeUp} className="mt-6 text-2xl font-medium text-white/90 sm:text-3xl">
             A <span className="text-primary">MERN Stack Developer</span> <br className="hidden sm:block" />
-            From <span className="text-[oklch(0.78_0.17_145)]">Sylhet</span>.
+            From <span className="text-[oklch(0.78_0.17_145)]">Sylhet</span>
           </motion.p>
           <motion.p variants={fadeUp} className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
             I build modern, user-focused web applications using JavaScript, TypeScript, and the MERN stack — and sharpen my algorithmic thinking through competitive programming in C++.
@@ -417,6 +382,14 @@ function Hero() {
             >
               View My Work
               <FaExternalLinkAlt className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+            </a>
+            <a
+              href="/resume.pdf"
+              download
+              className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-primary hover:text-primary-foreground"
+            >
+              Download Resume
+              <FaExternalLinkAlt className="h-3 w-3" />
             </a>
             <div className="flex items-center gap-3">
               {SOCIALS.map((s) => (
@@ -511,7 +484,7 @@ function About() {
           initial={{ clipPath: "inset(0 100% 0 0)" }}
           animate={inView ? { clipPath: "inset(0 0% 0 0)" } : {}}
           transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] as const }}
-          className="relative mx-auto aspect-[4/5] w-full max-w-md"
+          className="relative mx-auto aspect-[4/5] w-full max-w-md "
         >
           <TornPhoto src={portrait} alt="Sumaiya Jannat about" className="h-full w-full" />
 
@@ -519,7 +492,7 @@ function About() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="absolute -left-4 top-10 rounded-2xl bg-card px-5 py-4 shadow-2xl sm:-left-8"
+            className="absolute left-0 top-10 rounded-2xl bg-card px-5 py-4 shadow-2xl sm:-left-8 max-w-[12rem] text-left"
           >
             <div className="font-display text-3xl font-extrabold text-[oklch(0.78_0.17_145)]">3+</div>
             <div className="text-xs text-muted-foreground">Projects Shipped</div>
@@ -528,7 +501,7 @@ function About() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.75, duration: 0.5 }}
-            className="absolute -right-4 bottom-14 rounded-2xl bg-card px-5 py-4 shadow-2xl sm:-right-8"
+            className="absolute right-4 bottom-10 z-20 rounded-2xl bg-card px-5 py-4 shadow-2xl max-w-[12rem] text-left"
           >
             <div className="font-display text-3xl font-extrabold text-[oklch(0.82_0.15_82)]">MERN</div>
             <div className="text-xs text-muted-foreground">Full-Stack Focus</div>
@@ -716,10 +689,18 @@ function Projects() {
               transition={{ duration: 0.4, delay: i * 0.05 }}
               className="group relative overflow-hidden rounded-3xl bg-card"
             >
-              <div className={`relative aspect-[4/3] overflow-hidden bg-gradient-to-br ${p.gradient}`}>
-                <div className="absolute inset-0 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-                  <div className="font-display text-4xl font-extrabold text-white/95 drop-shadow-lg">
-                    {p.name.split(" ")[0]}
+              <div className="relative overflow-hidden">
+                <img
+                  src={p.image}
+                  alt={`${p.name} screenshot`}
+                  className="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4">
+                  <span className="rounded-full bg-black/60 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/80">
+                    {p.category}
+                  </span>
+                  <div className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white/80 backdrop-blur">
+                    {p.name}
                   </div>
                 </div>
                 <div className="absolute inset-0 flex items-end justify-center gap-3 bg-black/70 p-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -744,9 +725,7 @@ function Projects() {
                 </div>
               </div>
               <div className="p-6">
-                <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">{p.category}</div>
-                <h3 className="mb-2 text-xl font-bold text-white">{p.name}</h3>
-                <p className="mb-4 text-sm text-muted-foreground">{p.tagline}</p>
+                <p className="mb-3 text-sm font-medium text-primary">{p.tagline}</p>
                 <p className="mb-4 text-sm leading-relaxed text-white/70">{p.description}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {p.tech.slice(0, 6).map((t) => (
@@ -760,10 +739,75 @@ function Projects() {
                     </span>
                   )}
                 </div>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Link
+                    to={`/projects/${p.id}`}
+                    className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold text-white transition-all hover:bg-white/20"
+                  >
+                    View Details
+                  </Link>
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition-all hover:-translate-y-0.5"
+                  >
+                    GitHub
+                  </a>
+                </div>
               </div>
             </motion.article>
           ))}
         </AnimatePresence>
+      </motion.div>
+    </section>
+  );
+}
+
+function Experience() {
+  const { ref, inView } = useReveal();
+  return (
+    <section id="experience" ref={ref} className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+        className="mb-10 text-center"
+      >
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-primary">Experience</p>
+        <h2 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
+          What I've <span className="text-primary">Built</span>
+        </h2>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.15 }}
+        className="grid gap-6 lg:grid-cols-3"
+      >
+        {[
+          {
+            title: "Web Application Development",
+            subtitle: "MERN + Next.js projects",
+            description: "Built end-to-end applications for education, healthcare, and pet adoption with responsive UI and secure API flows.",
+          },
+          {
+            title: "UI & Interaction Design",
+            subtitle: "Motion-led experiences",
+            description: "Added polished animations, clean card layouts, and responsive interfaces optimized for desktop and mobile.",
+          },
+          {
+            title: "Problem Solving",
+            subtitle: "Algorithm practice",
+            description: "Improved logic and data handling through competitive programming and real-world debugging challenges.",
+          },
+        ].map((item) => (
+          <div key={item.title} className="rounded-3xl bg-card p-8 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
+            <div className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-primary">{item.subtitle}</div>
+            <h3 className="mb-4 text-2xl font-bold text-white">{item.title}</h3>
+            <p className="text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+          </div>
+        ))}
       </motion.div>
     </section>
   );
@@ -827,6 +871,7 @@ function Contact() {
             {[
               { icon: FaEnvelope, label: "Email", value: "sumaiyajannat2209@gmail.com", href: "mailto:sumaiyajannat2209@gmail.com", color: "primary" },
               { icon: FaPhone, label: "Phone", value: "01533029643", href: "tel:01533029643", color: "accent-green" },
+              { icon: FaPhone, label: "WhatsApp", value: "+8801533029643", href: "https://wa.me/8801533029643", color: "accent-purple" },
               { icon: FaMapMarkerAlt, label: "Location", value: "Sylhet, Bangladesh", color: "accent-gold" },
             ].map((c) => {
               const inner = (
@@ -952,6 +997,7 @@ function Portfolio() {
         <About />
         <Skills />
         <Projects />
+        <Experience />
         <Education />
         <Contact />
       </main>
