@@ -475,7 +475,7 @@ function FeatureStrip() {
 function About() {
   const { ref, inView } = useReveal();
   return (
-    <section id="about" ref={ref} className="relative overflow-visible mx-auto max-w-7xl md:px-6 py-24 lg:px-10">
+    <section id="about" ref={ref} className="relative overflow-visible mx-auto max-w-7xl px-6 md:py-24 pb-20 md:pb-0 lg:px-10">
       <ConfettiDots className="opacity-40" />
       <div className="grid grid-cols-1 items-center gap-14 overflow-visible lg:grid-cols-2">
         <motion.div
@@ -759,59 +759,11 @@ function Projects() {
   );
 }
 
-function Experience() {
-  const { ref, inView } = useReveal();
-  return (
-    <section id="experience" ref={ref} className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
-        className="mb-10 text-center"
-      >
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-primary">Experience</p>
-        <h2 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
-          What I've <span className="text-primary">Built</span>
-        </h2>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.15 }}
-        className="grid gap-6 lg:grid-cols-3"
-      >
-        {[
-          {
-            title: "Web Application Development",
-            subtitle: "MERN + Next.js projects",
-            description: "Built end-to-end applications for education, healthcare, and pet adoption with responsive UI and secure API flows.",
-          },
-          {
-            title: "UI & Interaction Design",
-            subtitle: "Motion-led experiences",
-            description: "Added polished animations, clean card layouts, and responsive interfaces optimized for desktop and mobile.",
-          },
-          {
-            title: "Problem Solving",
-            subtitle: "Algorithm practice",
-            description: "Improved logic and data handling through competitive programming and real-world debugging challenges.",
-          },
-        ].map((item) => (
-          <div key={item.title} className="rounded-3xl bg-card p-8 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)]">
-            <div className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-primary">{item.subtitle}</div>
-            <h3 className="mb-4 text-2xl font-bold text-white">{item.title}</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">{item.description}</p>
-          </div>
-        ))}
-      </motion.div>
-    </section>
-  );
-}
 
 function Education() {
   const { ref, inView } = useReveal();
   return (
-    <section id="education" ref={ref} className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+    <section id="education" ref={ref} className="mx-auto max-w-7xl px-6 md:py-16 lg:px-10">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -992,7 +944,6 @@ function Portfolio() {
         <About />
         <Skills />
         <Projects />
-        <Experience />
         <Education />
         <Contact />
       </main>
