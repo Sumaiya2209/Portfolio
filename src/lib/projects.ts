@@ -68,7 +68,7 @@ export const PROJECTS: Project[] = [
       "Add patient medical record versioning.",
     ],
     github: "https://github.com/Sumaiya2209/medicare-client",
-    live: null,
+    live: "https://medicare-client-five.vercel.app",
     image: medicareImg,
   },
   {
